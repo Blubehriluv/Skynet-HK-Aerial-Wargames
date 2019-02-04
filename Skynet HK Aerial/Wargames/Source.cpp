@@ -1,11 +1,15 @@
 // Creating Skynet Hunter Killer Aerial 
 
+	//Things to include so the code isn't broken
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <cstdlib>
 
+	//Placed the namespace in to make using "cout", "cin", "endl", etc., easier.
 using namespace std;
+
+	//Initialized variables
 int enemyLoc;
 int counter = 0;
 int highNum = 64;
