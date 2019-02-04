@@ -11,8 +11,60 @@ int counter = 0;
 int highNum = 64;
 int lowNum = 1;
 int guess = ((highNum - lowNum) / 2) + lowNum;
+int myGuess;
+int myTotalGuesses;
+int randGuess;
+int countGuess;
+
 //bool found = false;
 
+void playerChecking();
+
+void guessAgain()
+{
+	cout << "Guess again: ";
+	cin >> myGuess;
+	playerChecking();
+}
+
+void playerSolve()
+{
+	if (myGuess > enemyLoc)
+	{
+		cout << "	The location is lower!\n" << endl;
+		guessAgain();
+	}
+	//When the guess is less than the enemy location
+	if (myGuess < enemyLoc)
+	{
+		cout << "	The location is higher!\n" << endl;
+		guessAgain();
+	}
+}
+
+void playerChecking()
+{
+	//If the enemy is NOT found
+	if (myGuess != enemyLoc)
+	{
+		cout << "\nThe guess " << myGuess << " is incorrect." << endl;
+		playerSolve();
+		myTotalGuesses++;
+		return;
+	}
+	//If the enemy IS found
+	if (myGuess == enemyLoc)
+	{
+		cout << "Correct! You found the enemy!" << endl;
+		return;
+	}
+}
+
+
+
+
+
+/*
 void found()
 {
 	cout << "	ENEMY SPOTTED!\n" << endl;
@@ -64,7 +116,7 @@ void checking()
 		found();
 		return;
 	}
-}
+}*/
 
 int main()
 {
@@ -76,11 +128,15 @@ int main()
 	system("pause");
 	cout << "\n" << endl;
 
-	cout << "	ENEMY LOCATION: " << enemyLoc << ".\n" << endl;
+	//cout << "	ENEMY LOCATION: " << enemyLoc << ".\n" << endl;
+	cout << "What is your guess?" << endl;
+	cin >> myGuess;
+	playerChecking();
+
 
 	system("pause");
 
-	checking();
+	//checking();
 
 	system("pause");
 	return 0;
