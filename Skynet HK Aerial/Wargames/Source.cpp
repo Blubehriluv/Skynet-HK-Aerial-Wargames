@@ -16,11 +16,12 @@ int highNum = 64;
 int lowNum = 1;
 int guess = ((highNum - lowNum) / 2) + lowNum;
 int myGuess;
-int myTotalGuesses;
+int myTotalGuesses = 0;
 int randGuess;
-int countGuess;
+int randCounter = 0;
+int countGuess = 0;
 
-//~~~~~~~~~~~~ BEGINNING OF PLAYER GUESSING ~~~~~~~~~~~~
+//~~~~~~~~~~~~ BEGINNING OF PLAYER GUESSING ~~~~~~~~~~~~~~
 
 	//Calls function to beginning so nothing breaks
 void playerChecking();
@@ -53,6 +54,8 @@ void playerSolve()
 		guessAgain();
 	}
 }
+
+void predict();
 	//Checks to see if the player guess is correct
 void playerChecking()
 {
@@ -70,23 +73,16 @@ void playerChecking()
 	if (myGuess == enemyLoc)
 	{
 		cout << "Correct! You found the enemy!" << endl;
+		predict();
 		return;
 	}
 }
 //~~~~~~~~~~~~~~~~~END OF PLAYER GUESSING ~~~~~~~~~~~~~~~~~~
 
 
-
-
-/*
-void found()
-{
-	cout << "	ENEMY SPOTTED!\n" << endl;
-	cout << "Success in [" << counter << "] tries.\n" << endl;
-}
+//~~~~~~~~~~~~~~~BEGINNING OF BINARY SEARCH~~~~~~~~~~~~~~~~~
 
 //Testing to see if the enemy has been found yet
-
 void checking();
 
 void predict()
@@ -115,6 +111,9 @@ void solve()
 	}
 }
 
+	//Calls function so nothing breaks
+void counterBoi();
+
 void checking()
 {
 	//If the enemy is NOT found
@@ -125,12 +124,57 @@ void checking()
 		return;
 	}
 	//If the enemy IS found
-	while (guess == enemyLoc)
+	if (guess == enemyLoc)
 	{
-		found();
+		//counterBoi();
 		return;
 	}
-}*/
+}
+//~~~~~~~~~~~~~~~~~~~END OF BINARY SEARCH~~~~~~~~~~~~~~~~~~
+/*
+void randomPredict();
+
+//~~~~~~~~~~~~~~~~~START OF COUNTER SEARCH~~~~~~~~~~~~~~~~~
+
+void counterBoi()
+{
+	countGuess = enemyLoc;
+	randomPredict();
+}
+
+//~~~~~~~~~~~~~~~~~~~END OF COUNTER SEARCH~~~~~~~~~~~~~~~~~
+
+//~~~~~~~~~~~~~~~~~~~START OF RANDOM SEARCH~~~~~~~~~~~~~~~~
+
+void randomSolve();
+
+void randomPredict()
+{
+	srand(time(NULL));
+	randGuess = rand() % 64 + 1;
+	randomSolve();
+}
+
+void randomSolve()
+{
+	//When the guess is greater than the enemy location
+	if (randGuess != enemyLoc)
+	{
+		highNum = guess;
+		randCounter++;
+		randomPredict();
+	}
+	if (randGuess == enemyLoc)
+	{
+		cout << "It took the player " << myTotalGuesses << " times to guess right" << endl;
+		cout << "It took the random AI " << randCounter << " times to guess right" << endl;
+		cout << "It took the counting AI " << countGuess << " times to guess right" << endl;
+		cout << "It took the binary AI " << counter << " times to guess right" << endl;
+	}
+}
+
+//~~~~~~~~~~~~~~~~~~~~END OF RANDOM SEARCH~~~~~~~~~~~~~~~~~
+*/
 
 int main()
 {
@@ -147,11 +191,7 @@ int main()
 	cin >> myGuess;
 	playerChecking();
 
-
 	system("pause");
 
-	//checking();
-
-	system("pause");
 	return 0;
 }
