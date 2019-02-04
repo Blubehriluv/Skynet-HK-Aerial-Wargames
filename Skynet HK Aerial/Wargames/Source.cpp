@@ -16,39 +16,49 @@ int myTotalGuesses;
 int randGuess;
 int countGuess;
 
-//bool found = false;
+//~~~~~~~~~~~~ BEGINNING OF PLAYER GUESSING ~~~~~~~~~~~~
 
+	//Calls function to beginning so nothing breaks
 void playerChecking();
 
+	//Function that asks the player to guess again when they are wrong
 void guessAgain()
 {
 	cout << "Guess again: ";
+		//Accepts new guess value
 	cin >> myGuess;
+		//Goes to check if answer is right
 	playerChecking();
 }
 
+	//Helps the player find the answer 
 void playerSolve()
 {
+	//If the player's guess is greater than the enemy location
 	if (myGuess > enemyLoc)
 	{
 		cout << "	The location is lower!\n" << endl;
+			//They are told to guess again
 		guessAgain();
 	}
-	//When the guess is less than the enemy location
+	//When the player's guess is lower than the enemy location
 	if (myGuess < enemyLoc)
 	{
 		cout << "	The location is higher!\n" << endl;
+			//They are told to guess again
 		guessAgain();
 	}
 }
-
+	//Checks to see if the player guess is correct
 void playerChecking()
 {
 	//If the enemy is NOT found
 	if (myGuess != enemyLoc)
 	{
 		cout << "\nThe guess " << myGuess << " is incorrect." << endl;
+			//Sends the player to a hint before guessing again
 		playerSolve();
+			//Counts the player's total guesses before they're correct
 		myTotalGuesses++;
 		return;
 	}
@@ -59,7 +69,7 @@ void playerChecking()
 		return;
 	}
 }
-
+//~~~~~~~~~~~~~~~~~END OF PLAYER GUESSING ~~~~~~~~~~~~~~~~~~
 
 
 
