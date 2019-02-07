@@ -9,7 +9,7 @@
 	//Placed the namespace in to make using "cout", "cin", "endl", etc., easier.
 using namespace std;
 
-	//Initialized variables
+	//Initialized and declared variables
 int enemyLoc;
 int counter = 0;
 int highNum = 64;
@@ -62,11 +62,12 @@ void playerChecking()
 	//If the enemy is NOT found
 	if (myGuess != enemyLoc)
 	{
+			//Prints the current incorrect guess
 		cout << "\nThe guess " << myGuess << " is incorrect." << endl;
-			//Sends the player to a hint before guessing again
-		playerSolve();
 			//Counts the player's total guesses before they're correct
 		myTotalGuesses++;
+			//Sends the player to a hint before guessing again
+		playerSolve();
 		return;
 	}
 	//If the enemy IS found
@@ -126,12 +127,14 @@ void checking()
 	//If the enemy IS found
 	if (guess == enemyLoc)
 	{
-		//counterBoi();
+		cout << "\nThe Skynet HK is searching at '" << guess << "'..." << endl;
+		cout << "Binary AI has found the enemy!\n" << endl;
+		counterBoi();
 		return;
 	}
 }
 //~~~~~~~~~~~~~~~~~~~END OF BINARY SEARCH~~~~~~~~~~~~~~~~~~
-/*
+
 void randomPredict();
 
 //~~~~~~~~~~~~~~~~~START OF COUNTER SEARCH~~~~~~~~~~~~~~~~~
@@ -139,6 +142,7 @@ void randomPredict();
 void counterBoi()
 {
 	countGuess = enemyLoc;
+	cout << "Counter AI has found the enemy!\n" << endl;
 	randomPredict();
 }
 
@@ -150,45 +154,55 @@ void randomSolve();
 
 void randomPredict()
 {
-	srand(time(NULL));
+		//Creates the Random AI's guesses
 	randGuess = rand() % 64 + 1;
+		//Checks to see if the Random guess is correct
 	randomSolve();
 }
 
 void randomSolve()
 {
-	//When the guess is greater than the enemy location
+		//When the random guess is NOT equal to the enemy location
 	if (randGuess != enemyLoc)
 	{
-		highNum = guess;
 		randCounter++;
+		//cout << "Random AI is searching at " << randGuess << endl;
 		randomPredict();
 	}
+		//If the random guess is equal to the enemy location
 	if (randGuess == enemyLoc)
 	{
-		cout << "It took the player " << myTotalGuesses << " times to guess right" << endl;
-		cout << "It took the random AI " << randCounter << " times to guess right" << endl;
-		cout << "It took the counting AI " << countGuess << " times to guess right" << endl;
-		cout << "It took the binary AI " << counter << " times to guess right" << endl;
+		cout << "Random AI has found the enemy! \n" << endl;
+
+		cout << "It took the player " << myTotalGuesses << " times to guess correctly." << endl;
+		cout << "It took the random AI " << randCounter << " times to guess correctly." << endl;
+		cout << "It took the counting AI " << countGuess << " times to guess correctly." << endl;
+		cout << "It took the binary AI " << counter << " times to guess correctly.\n" << endl;
+		system("pause");
 	}
 }
 
 //~~~~~~~~~~~~~~~~~~~~END OF RANDOM SEARCH~~~~~~~~~~~~~~~~~
-*/
+
 
 int main()
 {
+		//Helps create the random variables
 	srand(time(NULL));
+		//Generates the enemy location
 	enemyLoc = 1 + rand() % 64;
+		//Introductory Text
 	cout << "		SKYNET 'HK' AERIAL ACTIVATED!\n" << endl;
 	cout << "	Spawn enemy on 8 x 8 grid!" << endl;
 
 	system("pause");
 	cout << "\n" << endl;
-
+		//UNCOMMENT TO SEE ENEMY LOCATION AT BEGINNING
 	//cout << "	ENEMY LOCATION: " << enemyLoc << ".\n" << endl;
 	cout << "What is your guess?" << endl;
+		//User input for guesses
 	cin >> myGuess;
+		//Checks to see if guess is correct
 	playerChecking();
 
 	system("pause");

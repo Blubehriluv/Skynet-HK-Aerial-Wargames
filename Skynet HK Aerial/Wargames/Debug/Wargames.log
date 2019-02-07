@@ -1,3 +1,3 @@
 ﻿  Source.cpp
-c:\users\taymcken\documents\github\skynet-hk-aerial-wargames\skynet hk aerial\wargames\source.cpp(181): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\taymcken\documents\github\skynet-hk-aerial-wargames\skynet hk aerial\wargames\source.cpp(188): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Wargames.vcxproj -> C:\Users\taymcken\Documents\GitHub\Skynet-HK-Aerial-Wargames\Skynet HK Aerial\Debug\Wargames.exe
